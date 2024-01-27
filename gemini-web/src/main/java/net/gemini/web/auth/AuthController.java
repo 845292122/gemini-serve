@@ -23,7 +23,6 @@ public class AuthController {
     @Operation(summary = "登录")
     @PostMapping("login")
     public HttpResult<String> login(@RequestBody LoginDto loginDto) {
-        // todo 记录登录日志
         String token = authService.login(loginDto);
         return HttpResult.ok(token);
     }

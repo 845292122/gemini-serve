@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.gemini.common.enums.UserStatusEnum;
 import net.gemini.common.exception.BusinessException;
 import net.gemini.common.exception.BusinessStatus;
+import net.gemini.domain.system.log.LogDomainService;
 import net.gemini.domain.system.user.ability.UserService;
 import net.gemini.domain.system.user.pojo.User;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class AuthService {
 
     private final UserService userService;
     private final AuthCache authCache;
+    private final LogDomainService logDomainService;
 
     public String login(LoginDto loginDto) {
 
@@ -46,6 +48,7 @@ public class AuthService {
 
         StpUtil.login(user.getUserId(), new SaLoginModel().setExtra("username", username));
         authCache.getLoginInfo(user);
+        logDomainService.recordLoginLog(user);
         return StpUtil.getTokenValue();
     }
 
