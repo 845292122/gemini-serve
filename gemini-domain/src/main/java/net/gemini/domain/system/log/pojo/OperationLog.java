@@ -16,49 +16,49 @@ public class OperationLog implements Serializable {
      * 日志主键
      */
     @TableId(value = "operation_id", type = IdType.AUTO)
-    private Long operation_id;
+    private Long operationId;
 
     /**
      * 业务类型（0其它 1新增 2修改 3删除）
      */
     @TableField(value = "business_type")
-    private Integer business_type;
+    private Integer businessType;
 
     /**
      * 请求方式
      */
     @TableField(value = "request_method")
-    private Integer request_method;
+    private Integer requestMethod;
 
     /**
      * 请求模块
      */
     @TableField(value = "request_module")
-    private String request_module;
+    private String requestModule;
 
     /**
      * 请求URL
      */
     @TableField(value = "request_url")
-    private String request_url;
+    private String requestUrl;
 
     /**
      * 方法名称
      */
     @TableField(value = "method_name")
-    private String method_name;
+    private String methodName;
 
     /**
-     * 操作类别（0其它 1后台用户 2手机端用户）
+     * 操作类别（1 其他 2 web 3 移动端 ）
      */
     @TableField(value = "operator_type")
-    private Integer operator_type;
+    private Integer operatorType;
 
     /**
      * 用户ID
      */
     @TableField(value = "user_id")
-    private Long user_id;
+    private Long userId;
 
     /**
      * 操作人员
@@ -70,25 +70,25 @@ public class OperationLog implements Serializable {
      * 操作人员ip
      */
     @TableField(value = "operator_ip")
-    private String operator_ip;
+    private String operatorIp;
 
     /**
      * 操作地点
      */
     @TableField(value = "operator_location")
-    private String operator_location;
+    private String operatorLocation;
 
     /**
      * 请求参数
      */
     @TableField(value = "operation_param")
-    private String operation_param;
+    private String operationParam;
 
     /**
      * 返回参数
      */
     @TableField(value = "operation_result")
-    private String operation_result;
+    private String operationResult;
 
     /**
      * 操作状态（1正常 0异常）
@@ -100,13 +100,13 @@ public class OperationLog implements Serializable {
      * 错误消息
      */
     @TableField(value = "error_stack")
-    private String error_stack;
+    private String errorStack;
 
     /**
      * 操作时间
      */
     @TableField(value = "operation_time")
-    private Date operation_time;
+    private Date operationTime;
 
     /**
      * 逻辑删除

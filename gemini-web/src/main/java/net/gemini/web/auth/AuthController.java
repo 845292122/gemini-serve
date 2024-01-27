@@ -23,6 +23,7 @@ public class AuthController {
     @Operation(summary = "登录")
     @PostMapping("login")
     public HttpResult<String> login(@RequestBody LoginDto loginDto) {
+        // todo 记录登录日志
         String token = authService.login(loginDto);
         return HttpResult.ok(token);
     }
@@ -37,6 +38,7 @@ public class AuthController {
     @Operation(summary = "注销登录")
     @PostMapping("logout")
     public HttpResult<Void> logout() {
+        // 记录退出日志
         authService.logout();
         return HttpResult.ok();
     }

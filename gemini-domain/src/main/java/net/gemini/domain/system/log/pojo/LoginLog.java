@@ -16,7 +16,7 @@ public class LoginLog implements Serializable {
      * 访问ID
      */
     @TableId(value = "info_id", type = IdType.AUTO)
-    private Long info_id;
+    private Long infoId;
 
     /**
      * 用户账号
@@ -28,13 +28,13 @@ public class LoginLog implements Serializable {
      * 登录IP地址
      */
     @TableField(value = "ip_address")
-    private String ip_address;
+    private String ipAddress;
 
     /**
      * 登录地点
      */
     @TableField(value = "login_location")
-    private String login_location;
+    private String loginLocation;
 
     /**
      * 浏览器类型
@@ -46,7 +46,7 @@ public class LoginLog implements Serializable {
      * 操作系统
      */
     @TableField(value = "operation_system")
-    private String operation_system;
+    private String operationSystem;
 
     /**
      * 登录状态（1成功 0失败）
@@ -64,7 +64,7 @@ public class LoginLog implements Serializable {
      * 访问时间
      */
     @TableField(value = "login_time")
-    private Date login_time;
+    private Date loginTime;
 
     /**
      * 逻辑删除

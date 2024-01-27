@@ -1,14 +1,20 @@
 package net.gemini.web.system;
 
+import cn.hutool.core.collection.ListUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import net.gemini.common.base.HttpResult;
 import net.gemini.common.base.PageDTO;
 import net.gemini.domain.system.user.UserDomainService;
 import net.gemini.domain.system.user.pojo.UserVO;
+import net.gemini.infrastructure.excel.GeminiExcelUtil;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * @author edison
@@ -56,4 +62,24 @@ public class UserController {
         return HttpResult.ok();
     }
 
+    @Operation(summary = "导入用户")
+    @PostMapping("-import")
+    public HttpResult<Void> importUser(MultipartFile file) {
+        List<UserVO> userExcel = GeminiExcelUtil.readFromRequest(UserVO.class, file);
+        userExcel.forEach(ue -> userDomainService.addUser(ue));
+        return HttpResult.ok();
+    }
+
+    @Operation(summary = "导出用户")
+    @GetMapping("-export")
+    public void exportUser(HttpServletResponse response, UserVO userVO) {
+        PageDTO<UserVO> userList = userDomainService.getUserList(userVO);
+        GeminiExcelUtil.writeToResponse(userList.getRecords(), UserVO.class, response);
+    }
+
+    @Operation(summary = "用户导入模板")
+    @GetMapping("template")
+    public void excelTemplate(HttpServletResponse response) {
+        GeminiExcelUtil.writeToResponse(ListUtil.toList(new UserVO()), UserVO.class, response);
+    }
 }

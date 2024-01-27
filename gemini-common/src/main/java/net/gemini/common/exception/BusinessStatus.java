@@ -143,7 +143,8 @@ public enum BusinessStatus implements BusinessStatusInterface {
      * 内部异常
      */
     public enum Internal implements BusinessStatusInterface {
-        UNKNOWN_ERROR(599, "未知异常:{}");
+        UNKNOWN_ERROR(599, "未知异常:{}"),
+        EXCEL_PROCESS_ERROR(501, "Excel处理失败: {}");
 
         private final int code;
         private final String msg;

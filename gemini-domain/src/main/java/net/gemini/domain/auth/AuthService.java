@@ -1,6 +1,7 @@
 package net.gemini.domain.auth;
 
 import cn.dev33.satoken.secure.BCrypt;
+import cn.dev33.satoken.stp.SaLoginModel;
 import cn.dev33.satoken.stp.StpUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,7 @@ public class AuthService {
             throw new BusinessException(BusinessStatus.Common.USER_DEACTIVATION);
         }
 
-        StpUtil.login(user.getUserId());
+        StpUtil.login(user.getUserId(), new SaLoginModel().setExtra("username", username));
         authCache.getLoginInfo(user);
         return StpUtil.getTokenValue();
     }
