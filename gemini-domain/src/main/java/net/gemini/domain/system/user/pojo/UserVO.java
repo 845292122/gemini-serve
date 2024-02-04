@@ -2,13 +2,13 @@ package net.gemini.domain.system.user.pojo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.gemini.common.base.BaseVO;
 import org.springframework.util.StringUtils;
 
+import javax.validation.constraints.NotNull;
 import java.sql.Driver;
 import java.util.Date;
 import java.util.Objects;

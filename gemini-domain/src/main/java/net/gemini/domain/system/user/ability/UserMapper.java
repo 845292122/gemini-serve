@@ -16,12 +16,10 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-    @Select("""
-        select u.*, o.org_name, o.leader_name as org_leader
-        from sys_user u
-        left join sys_org o
-        on o.org_id = u.org_id
-        ${ew.customSqlSegment}
-    """)
+    @Select(" select u.*, o.org_name, o.leader_name as org_leader "
+            + " from sys_user u "
+            + " left join sys_org o "
+            + " on o.org_id = u.org_id "
+            + " ${ew.customSqlSegment} ")
     Page<UserVO> getUserList(Page<User> page, @Param(Constants.WRAPPER) Wrapper<User> queryWrapper);
 }

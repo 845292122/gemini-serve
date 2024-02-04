@@ -6,6 +6,7 @@ import net.gemini.domain.system.user.pojo.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -33,6 +34,6 @@ public class StpInterfaceImpl implements StpInterface {
         user.setUserId( (long) loginId );
         LoginInfoDto loginInfo = authCache.getLoginInfo(user);
         String roleKey = loginInfo.getRoleKey();
-        return List.of(roleKey);
+        return Arrays.asList(roleKey);
     }
 }

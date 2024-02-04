@@ -1,7 +1,7 @@
 package net.gemini.domain.system.org.pojo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,0 +1,64 @@
+2024-02-04 16:41:17.920  INFO 19785 --- [main] net.gemini.GeminiApplication             : Starting GeminiApplication using Java 1.8.0_332 on 192.168.1.103 with PID 19785 (/Users/edison/workspace/Gemini/gemini-web/target/classes started by edison in /Users/edison/workspace/Gemini)
+2024-02-04 16:41:17.921 DEBUG 19785 --- [main] net.gemini.GeminiApplication             : Running with Spring Boot v2.7.18, Spring v5.3.31
+2024-02-04 16:41:17.921  INFO 19785 --- [main] net.gemini.GeminiApplication             : The following 1 profile is active: "dev"
+2024-02-04 16:41:18.560  INFO 19785 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-04 16:41:18.562  INFO 19785 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-02-04 16:41:18.578  INFO 19785 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2024-02-04 16:41:19.289  INFO 19785 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2024-02-04 16:41:19.296  INFO 19785 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-04 16:41:19.296  INFO 19785 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2024-02-04 16:41:19.356  INFO 19785 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-04 16:41:19.356  INFO 19785 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1391 ms
+2024-02-04 16:41:20.713  INFO 19785 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2024-02-04 16:41:20.994  INFO 19785 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2024-02-04 16:41:20.994  INFO 19785 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2024-02-04 16:41:20.996  INFO 19785 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-02-04 16:41:21.027  INFO 19785 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-02-04 16:41:21.148  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2024-02-04 16:41:21.150  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editUsingPUT_1
+2024-02-04 16:41:21.151  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: removeUsingDELETE_1
+2024-02-04 16:41:21.162  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2024-02-04 16:41:21.165  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: infoUsingGET_1
+2024-02-04 16:41:21.172  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2024-02-04 16:41:21.174  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editUsingPUT_2
+2024-02-04 16:41:21.175  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: removeUsingDELETE_2
+2024-02-04 16:41:21.185  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2024-02-04 16:41:21.188  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: infoUsingGET_2
+2024-02-04 16:41:21.197  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2024-02-04 16:41:21.198  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editUsingPUT_3
+2024-02-04 16:41:21.201  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: removeUsingDELETE_3
+2024-02-04 16:41:21.215  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2024-02-04 16:41:21.218  INFO 19785 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: infoUsingGET_3
+2024-02-04 16:41:21.240  INFO 19785 --- [main] net.gemini.GeminiApplication             : Started GeminiApplication in 3.681 seconds (JVM running for 4.076)
+2024-02-04 16:54:53.772  INFO 20287 --- [main] net.gemini.GeminiApplication             : Starting GeminiApplication using Java 11.0.22 on 192.168.1.103 with PID 20287 (/Users/edison/workspace/Gemini/gemini-web/target/classes started by edison in /Users/edison/workspace/Gemini)
+2024-02-04 16:54:53.777 DEBUG 20287 --- [main] net.gemini.GeminiApplication             : Running with Spring Boot v2.7.18, Spring v5.3.31
+2024-02-04 16:54:53.777  INFO 20287 --- [main] net.gemini.GeminiApplication             : The following 1 profile is active: "dev"
+2024-02-04 16:54:54.280  INFO 20287 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-04 16:54:54.281  INFO 20287 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-02-04 16:54:54.298  INFO 20287 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2024-02-04 16:54:54.864  INFO 20287 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2024-02-04 16:54:54.871  INFO 20287 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-04 16:54:54.871  INFO 20287 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2024-02-04 16:54:54.965  INFO 20287 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-04 16:54:54.965  INFO 20287 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1155 ms
+2024-02-04 16:54:55.956  INFO 20287 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2024-02-04 16:54:56.112  INFO 20287 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2024-02-04 16:54:56.113  INFO 20287 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2024-02-04 16:54:56.114  INFO 20287 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-02-04 16:54:56.136  INFO 20287 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-02-04 16:54:56.233  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2024-02-04 16:54:56.234  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editUsingPUT_1
+2024-02-04 16:54:56.235  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: removeUsingDELETE_1
+2024-02-04 16:54:56.241  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2024-02-04 16:54:56.244  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: infoUsingGET_1
+2024-02-04 16:54:56.249  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2024-02-04 16:54:56.254  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editUsingPUT_2
+2024-02-04 16:54:56.255  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: removeUsingDELETE_2
+2024-02-04 16:54:56.263  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2024-02-04 16:54:56.265  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: infoUsingGET_2
+2024-02-04 16:54:56.271  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2024-02-04 16:54:56.272  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editUsingPUT_3
+2024-02-04 16:54:56.273  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: removeUsingDELETE_3
+2024-02-04 16:54:56.280  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2024-02-04 16:54:56.282  INFO 20287 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: infoUsingGET_3
+2024-02-04 16:54:56.295  INFO 20287 --- [main] net.gemini.GeminiApplication             : Started GeminiApplication in 2.961 seconds (JVM running for 3.501)

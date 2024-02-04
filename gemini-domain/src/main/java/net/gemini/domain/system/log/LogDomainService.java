@@ -1,7 +1,7 @@
 package net.gemini.domain.system.log;
 
 import cn.hutool.core.date.DateUtil;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import net.gemini.common.enums.StatusEnum;
 import net.gemini.domain.system.log.ability.LoginLogService;

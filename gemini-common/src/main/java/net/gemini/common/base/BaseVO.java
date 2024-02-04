@@ -6,9 +6,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-import jakarta.validation.constraints.Max;
 import lombok.Data;
 
+import javax.validation.constraints.Max;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;

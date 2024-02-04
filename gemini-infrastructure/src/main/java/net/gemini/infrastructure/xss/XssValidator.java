@@ -2,8 +2,9 @@ package net.gemini.infrastructure.xss;
 
 import cn.hutool.core.util.ReUtil;
 import cn.hutool.http.HtmlUtil;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author edison

@@ -5,15 +5,12 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.EnumUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.gemini.common.enums.OperationStatusEnum;
 import net.gemini.common.enums.RequestMethodEnum;
 import net.gemini.domain.system.log.LogDomainService;
 import net.gemini.domain.system.log.pojo.OperationLog;
-import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -25,6 +22,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.HandlerMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
@@ -109,10 +108,10 @@ public class OperateLogAspect {
             if (operateLog.isSaveRequestData()) {
                 if (RequestMethodEnum.GET == requestMethodEnum || RequestMethodEnum.POST == requestMethodEnum) {
                     String params = argsArrayToString(joinPoint.getArgs());
-                    operationLog.setOperationParam(StringUtils.substring(params, 0, 2000));
+                    operationLog.setOperationParam(StrUtil.sub(params, 0, 2000));
                 } else {
                     Map<?, ?> paramsMap = (Map<?, ?>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-                    operationLog.setOperationParam(StringUtils.substring(paramsMap.toString(), 0, 2000));
+                    operationLog.setOperationParam(StrUtil.sub(paramsMap.toString(), 0, 2000));
                 }
             }
 

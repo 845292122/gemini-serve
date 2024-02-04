@@ -1,0 +1,64 @@
+gemini:
+  name: gemini
+  request-id-key: Gemini-RequestID
+  upload-dir: /home/gemini
+  version: 1.0.0
+
+logging:
+  level:
+    net:
+      gemini: debug
+    org:
+      springframework: info
+
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    default-executor-type: simple
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    use-generated-keys: true
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+
+sa-token:
+  active-timeout: 259200
+  is-concurrent: false
+  is-log: false
+  is-print: false
+  is-read-body: false
+  is-read-cookie: false
+  is-read-header: true
+  is-share: false
+  timeout: 604800
+  token-name: auth-token
+  token-style: uuid
+server:
+  port: 8000
+  tomcat:
+    threads:
+      max: 500
+      min-spare: 100
+
+spring:
+  cache:
+    type: redis
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+
+knife4j:
+  enable: true
+  openapi:
+    title: Gemini文档
+    description: 后台管理系统
+    version: v1.0
+    group:
+      test1:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - net.gemini.web
