@@ -1,13 +1,8 @@
 package net.gemini.domain.system.role.pojo;
 
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import net.gemini.common.base.BaseVO;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -15,10 +10,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleVO extends BaseVO<Role> {
+public class RoleVO {
 
     public RoleVO(Role role) {
         if (Objects.nonNull(role)) {
@@ -55,16 +49,4 @@ public class RoleVO extends BaseVO<Role> {
     /**   ------------    **/
     private List<Long> menuIds;
     private List<Long> orgIds;
-
-    /**
-     * 构建查询条件
-     */
-    @Override
-    public QueryWrapper<Role> addQueryCondition() {
-        QueryWrapper<Role> wrapper = Wrappers.query();
-        wrapper.eq(Objects.nonNull(status), "status", status)
-                .eq(StrUtil.isNotEmpty(roleKey), "role_key", roleKey)
-                .like(StrUtil.isNotEmpty(roleName), "role_name", roleName);
-        return wrapper;
-    }
 }

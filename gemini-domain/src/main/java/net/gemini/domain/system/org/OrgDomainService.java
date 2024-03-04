@@ -1,8 +1,10 @@
 package net.gemini.domain.system.org;
 
+import cn.hutool.core.lang.tree.Tree;
 import lombok.RequiredArgsConstructor;
 import net.gemini.domain.system.org.ability.OrgService;
 import net.gemini.domain.system.org.pojo.Org;
+import net.gemini.domain.system.org.pojo.OrgQuery;
 import net.gemini.domain.system.org.pojo.OrgVO;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,8 @@ public class OrgDomainService {
 
     private final OrgService orgService;
 
-    public List<OrgVO> getOrgList(OrgVO orgVO) {
-        List<Org> list = orgService.list(orgVO.toQueryWrapper());
+    public List<OrgVO> getOrgList(OrgQuery orgQuery) {
+        List<Org> list = orgService.list(orgQuery.toQueryWrapper());
         return list.stream().map(OrgVO::new).collect(Collectors.toList());
     }
 
@@ -41,11 +43,17 @@ public class OrgDomainService {
         orgService.checkStatusAllowChange(orgVO);
         String ancestors = orgService.generateAncestors(orgVO);
         orgVO.setAncestors(ancestors);
+        Org org = new Org(orgVO);
+        orgService.updateById(org);
     }
 
     public void removeOrg(Long orgId) {
         orgService.checkHasChildOrg(orgId);
         orgService.checkOrgAssignedToUsers(orgId);
         orgService.removeById(orgId);
+    }
+
+    public List<Tree<Long>> getOrgTreeList(OrgQuery orgQuery) {
+        return orgService.listWithTree(orgQuery);
     }
 }

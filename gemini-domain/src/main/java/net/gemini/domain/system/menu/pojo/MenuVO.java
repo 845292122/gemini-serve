@@ -1,11 +1,8 @@
 package net.gemini.domain.system.menu.pojo;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.gemini.common.base.BaseVO;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -17,7 +14,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuVO extends BaseVO<Menu> {
+public class MenuVO {
 
     public MenuVO(Menu menu) {
         if (Objects.nonNull(menu)) {
@@ -27,9 +24,10 @@ public class MenuVO extends BaseVO<Menu> {
             this.menuType = menu.getMenuType();
             this.router = menu.getRouter();
             this.path = menu.getPath();
-            this.isButton = menu.getIsButton();
+            this.icon = menu.getIcon();
+            this.isHidden = menu.getIsHidden();
             this.permission = menu.getPermission();
-            this.meta = menu.getMeta();
+            this.orderNum = menu.getOrderNum();
             this.status = menu.getStatus();
             this.remark = menu.getRemark();
             this.creatorId = menu.getCreatorId();
@@ -46,22 +44,14 @@ public class MenuVO extends BaseVO<Menu> {
     private Integer menuType;
     private String router;
     private String path;
-    private Integer isButton;
+    private String icon;
+    private Integer isHidden;
     private String permission;
-    private String meta;
+    private Integer orderNum;
     private Integer status;
     private String remark;
     private Long creatorId;
     private Date createTime;
     private Long updaterId;
     private Date updateTime;
-
-    @Override
-    public QueryWrapper<Menu> addQueryCondition() {
-        QueryWrapper<Menu> queryWrapper = Wrappers.query();
-        queryWrapper.eq(Objects.nonNull(isButton), "is_button", isButton);
-        this.orderColumn = "parent_id";
-        this.orderDirection = "desc";
-        return queryWrapper;
-    }
 }

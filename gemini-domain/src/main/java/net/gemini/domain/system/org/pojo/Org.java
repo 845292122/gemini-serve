@@ -24,7 +24,6 @@ public class Org extends BaseEntity {
         this.ancestors = orgVO.getAncestors();
         this.orgName = orgVO.getOrgName();
         this.orderNum = orgVO.getOrderNum();
-        this.leaderId = orgVO.getLeaderId();
         this.leaderName = orgVO.getLeaderName();
         this.phone = orgVO.getPhone();
         this.email = orgVO.getEmail();
@@ -64,12 +63,6 @@ public class Org extends BaseEntity {
      */
     @TableField(value = "order_num")
     private Integer orderNum;
-
-    /**
-     * 
-     */
-    @TableField(value = "leader_id")
-    private Long leaderId;
 
     /**
      * 负责人

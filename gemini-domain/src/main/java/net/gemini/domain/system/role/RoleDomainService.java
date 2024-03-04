@@ -7,6 +7,7 @@ import net.gemini.common.base.PageDTO;
 import net.gemini.domain.system.menu.ability.MenuService;
 import net.gemini.domain.system.role.ability.RoleService;
 import net.gemini.domain.system.role.pojo.Role;
+import net.gemini.domain.system.role.pojo.RoleQuery;
 import net.gemini.domain.system.role.pojo.RoleVO;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,8 @@ public class RoleDomainService {
     private final RoleService roleService;
     private final MenuService menuService;
 
-    public PageDTO<RoleVO> getRoleList(RoleVO roleVO) {
-        Page<Role> page = roleService.page(roleVO.toPage(), roleVO.toQueryWrapper());
+    public PageDTO<RoleVO> getRoleList(RoleQuery roleQuery) {
+        Page<Role> page = roleService.page(roleQuery.toPage(), roleQuery.toQueryWrapper());
         List<RoleVO> records = page.getRecords().stream().map(RoleVO::new).collect(Collectors.toList());
         return new PageDTO<>(records, page.getTotal());
     }

@@ -11,25 +11,25 @@ import net.gemini.common.exception.BusinessStatus;
  */
 @Data
 @AllArgsConstructor
-public class HttpResult<T> {
+public class ResponseDTO<T> {
 
     private Integer code;
     private String msg;
     private T data;
 
-    public static <T> HttpResult<T> ok() {
+    public static <T> ResponseDTO<T> ok() {
         return build(BusinessStatus.SUCCESS.code(), BusinessStatus.SUCCESS.msg(), null);
     }
 
-    public static <T> HttpResult<T> ok(T data) {
+    public static <T> ResponseDTO<T> ok(T data) {
         return build(BusinessStatus.SUCCESS.code(), BusinessStatus.SUCCESS.msg(), data);
     }
 
-    public static <T> HttpResult<T> fail(BusinessException businessException) {
-        return build(businessException.getBusinessStatus().code(), businessException.getBusinessStatus().msg(), null);
+    public static <T> ResponseDTO<T> fail(BusinessException businessException) {
+        return build(businessException.getBusinessStatus().code(), businessException.getErrorMsg(), null);
     }
 
-    public static <T> HttpResult<T> build(Integer code, String msg, T data) {
-        return new HttpResult<>(code, msg, data);
+    public static <T> ResponseDTO<T> build(Integer code, String msg, T data) {
+        return new ResponseDTO<>(code, msg, data);
     }
 }

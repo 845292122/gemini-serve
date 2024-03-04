@@ -9,6 +9,7 @@ import net.gemini.common.exception.BusinessException;
 import net.gemini.common.exception.BusinessStatus;
 import net.gemini.domain.system.user.ability.UserService;
 import net.gemini.domain.system.user.pojo.User;
+import net.gemini.domain.system.user.pojo.UserQuery;
 import net.gemini.domain.system.user.pojo.UserVO;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ public class UserDomainService {
 
     private final UserService userService;
 
-    public PageDTO<UserVO> getUserList(UserVO userVO) {
-        Page<UserVO> page = userService.getUserList(userVO);
+    public PageDTO<UserVO> getUserList(UserQuery userQuery) {
+        Page<UserVO> page = userService.getUserList(userQuery);
         return new PageDTO<>(page.getRecords(), page.getTotal());
     }
 
@@ -46,7 +47,7 @@ public class UserDomainService {
     public void updateUser(UserVO userVO) {
         userService.checkPhoneUnique(userVO);
         userService.checkEmailUnique(userVO);
-        userService.updateById(new User());
+        userService.updateById(new User(userVO));
     }
 
     public void removeUser(Long userId) {

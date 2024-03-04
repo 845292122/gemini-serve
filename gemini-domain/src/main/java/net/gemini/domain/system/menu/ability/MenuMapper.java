@@ -26,13 +26,13 @@ public interface MenuMapper extends BaseMapper<Menu> {
     List<Menu> getMenuListByRoleId(Long roleId);
 
     @Select(
-        "select distinct m.menu_id"
-        + "from sys_menu m"
-        + "left join sys_role_menu rm"
-        + "on m.menu_id = rm.menu_id"
-        + "where rm.role_id = #{roleId}"
-        + "and m.deleted = 0"
-        + "group by m.menu_id"
+        "select distinct m.menu_id "
+        + "from sys_menu m "
+        + "left join sys_role_menu rm "
+        + "on m.menu_id = rm.menu_id "
+        + "where rm.role_id = #{roleId} "
+        + "and m.deleted = 0 "
+        + "group by m.menu_id "
     )
     List<Long> selectMenuIdsByRoleId(Long roleId);
 }

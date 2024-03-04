@@ -3,9 +3,10 @@ package net.gemini.web.system;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import net.gemini.common.base.HttpResult;
 import net.gemini.common.base.PageDTO;
+import net.gemini.common.base.ResponseDTO;
 import net.gemini.domain.system.role.RoleDomainService;
+import net.gemini.domain.system.role.pojo.RoleQuery;
 import net.gemini.domain.system.role.pojo.RoleVO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,36 +27,36 @@ public class RoleController {
 
     @ApiOperation(value = "角色列表")
     @GetMapping("list")
-    public HttpResult<PageDTO<RoleVO>> list(RoleVO roleVO) {
-        PageDTO<RoleVO> page = roleDomainService.getRoleList(roleVO);
-        return HttpResult.ok(page);
+    public ResponseDTO<PageDTO<RoleVO>> list(RoleQuery roleQuery) {
+        PageDTO<RoleVO> page = roleDomainService.getRoleList(roleQuery);
+        return ResponseDTO.ok(page);
     }
 
     @ApiOperation(value = "角色详情")
     @GetMapping("{roleId}")
-    public HttpResult<RoleVO> info(@PathVariable("roleId") @NotNull Long roleId) {
+    public ResponseDTO<RoleVO> info(@PathVariable("roleId") @NotNull Long roleId) {
         RoleVO roleInfo = roleDomainService.getRoleInfo(roleId);
-        return HttpResult.ok(roleInfo);
+        return ResponseDTO.ok(roleInfo);
     }
 
     @ApiOperation(value = "添加角色")
     @PostMapping
-    public HttpResult<Void> add(@Validated @RequestBody RoleVO roleVO) {
+    public ResponseDTO<Void> add(@Validated @RequestBody RoleVO roleVO) {
         roleDomainService.addRole(roleVO);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "修改角色")
     @PutMapping
-    public HttpResult<Void> edit(@Validated @RequestBody RoleVO roleVO) {
+    public ResponseDTO<Void> edit(@Validated @RequestBody RoleVO roleVO) {
         roleDomainService.updateRole(roleVO);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "删除角色")
     @DeleteMapping("{roleId}")
-    public HttpResult<Void> remove(@PathVariable("roleId") List<Long> roleIds) {
+    public ResponseDTO<Void> remove(@PathVariable("roleId") List<Long> roleIds) {
         roleDomainService.deleteRoleByIds(roleIds);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 }

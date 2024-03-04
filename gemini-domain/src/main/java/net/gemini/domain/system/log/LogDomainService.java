@@ -2,6 +2,8 @@ package net.gemini.domain.system.log;
 
 import cn.hutool.core.date.DateUtil;
 import javax.servlet.http.HttpServletRequest;
+
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import net.gemini.common.enums.StatusEnum;
 import net.gemini.domain.system.log.ability.LoginLogService;
@@ -19,6 +21,7 @@ import java.util.Objects;
 /**
  * @author edison
  */
+@Api(tags = "日志模块")
 @Service
 @RequiredArgsConstructor
 public class LogDomainService {

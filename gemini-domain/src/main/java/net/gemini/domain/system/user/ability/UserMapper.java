@@ -20,6 +20,6 @@ public interface UserMapper extends BaseMapper<User> {
             + " from sys_user u "
             + " left join sys_org o "
             + " on o.org_id = u.org_id "
-            + " ${ew.customSqlSegment} ")
+            + "${ew.customSqlSegment}")
     Page<UserVO> getUserList(Page<User> page, @Param(Constants.WRAPPER) Wrapper<User> queryWrapper);
 }

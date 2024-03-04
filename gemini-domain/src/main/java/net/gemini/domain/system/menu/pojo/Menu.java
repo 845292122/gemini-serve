@@ -29,9 +29,10 @@ public class Menu extends BaseEntity {
             this.menuType = menuVO.getMenuType();
             this.router = menuVO.getRouter();
             this.path = menuVO.getPath();
-            this.isButton = menuVO.getIsButton();
+            this.icon = menuVO.getIcon();
+            this.isHidden = menuVO.getIsHidden();
             this.permission = menuVO.getPermission();
-            this.meta = menuVO.getMeta();
+            this.orderNum = menuVO.getOrderNum();
             this.status = menuVO.getStatus();
             this.remark = menuVO.getRemark();
         }
@@ -75,22 +76,28 @@ public class Menu extends BaseEntity {
     private String path;
 
     /**
-     * 是否按钮
+     * 图标
      */
-    @TableField(value = "is_button")
-    private Integer isButton;
+    @TableField(value = "icon")
+    private String icon;
+
+    /**
+     * 是否隐藏
+     */
+    @TableField(value = "is_hidden")
+    private Integer isHidden;
+
+    /**
+     * 排序字段
+     */
+    @TableField(value = "order_num")
+    private Integer orderNum;
 
     /**
      * 权限标识
      */
     @TableField(value = "permission")
     private String permission;
-
-    /**
-     * 路由元信息
-     */
-    @TableField(value = "meta")
-    private String meta;
 
     /**
      * 菜单状态（1启用 0停用）

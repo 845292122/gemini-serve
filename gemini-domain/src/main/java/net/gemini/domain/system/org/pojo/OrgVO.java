@@ -1,12 +1,10 @@
 package net.gemini.domain.system.org.pojo;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.gemini.common.base.BaseVO;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -15,7 +13,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrgVO extends BaseVO<Org> {
+public class OrgVO {
 
     public OrgVO(Org org) {
         this.orgId = org.getOrgId();
@@ -23,7 +21,6 @@ public class OrgVO extends BaseVO<Org> {
         this.ancestors = org.getAncestors();
         this.orgName = org.getOrgName();
         this.orderNum = org.getOrderNum();
-        this.leaderId = org.getLeaderId();
         this.leaderName = org.getLeaderName();
         this.phone = org.getPhone();
         this.email = org.getEmail();
@@ -40,7 +37,6 @@ public class OrgVO extends BaseVO<Org> {
     @NotNull(message = "组织名称不能为空")
     private String orgName;
     private Integer orderNum;
-    private Long leaderId;
     private String leaderName;
     private String phone;
     private String email;
@@ -49,9 +45,4 @@ public class OrgVO extends BaseVO<Org> {
     private Date createTime;
     private Long updaterId;
     private Date updateTime;
-
-    @Override
-    public QueryWrapper<Org> addQueryCondition() {
-        return new QueryWrapper();
-    }
 }

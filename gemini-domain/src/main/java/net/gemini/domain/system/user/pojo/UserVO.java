@@ -1,17 +1,11 @@
 package net.gemini.domain.system.user.pojo;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.gemini.common.base.BaseVO;
-import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotNull;
-import java.sql.Driver;
 import java.util.Date;
-import java.util.Objects;
 
 /**
  * @author edison
@@ -19,7 +13,7 @@ import java.util.Objects;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserVO extends BaseVO<User> {
+public class UserVO {
 
     public UserVO (User user) {
         this.userId = user.getUserId();
@@ -70,20 +64,4 @@ public class UserVO extends BaseVO<User> {
     /** ----------------- **/
     private String orgName;
     private String orgLeader;
-
-    @Override
-    public QueryWrapper<User> addQueryCondition() {
-        QueryWrapper<User> wrapper = Wrappers.query();
-        wrapper.like(StringUtils.hasText(username), "u.username", username)
-                .like(StringUtils.hasText(phone), "u.phone", phone)
-                .eq(Objects.nonNull(userId), "u.user_id", userId)
-                .eq(Objects.nonNull(status), "u.status", status)
-                .eq("u.deleted", 0)
-                .and(Objects.nonNull(orgId),
-                        o -> o.eq("u.org_id", orgId)
-                                .or()
-                                .apply("u.org_id in (select t.org_id from sys_org t where find_in_set(" + orgId + ", ancestors)"));
-        this.timeRangeColumn = "u.create_time";
-        return wrapper;
-    }
 }

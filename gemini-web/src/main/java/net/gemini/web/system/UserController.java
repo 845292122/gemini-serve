@@ -4,9 +4,10 @@ import cn.hutool.core.collection.ListUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import net.gemini.common.base.HttpResult;
 import net.gemini.common.base.PageDTO;
+import net.gemini.common.base.ResponseDTO;
 import net.gemini.domain.system.user.UserDomainService;
+import net.gemini.domain.system.user.pojo.UserQuery;
 import net.gemini.domain.system.user.pojo.UserVO;
 import net.gemini.infrastructure.excel.GeminiExcelUtil;
 import org.springframework.validation.annotation.Validated;
@@ -29,51 +30,51 @@ public class UserController {
 
     @ApiOperation(value = "用户列表")
     @GetMapping
-    public HttpResult<PageDTO<UserVO>> list(UserVO userVO) {
-        PageDTO<UserVO> page = userDomainService.getUserList(userVO);
-        return HttpResult.ok(page);
+    public ResponseDTO<PageDTO<UserVO>> list(UserQuery userQuery) {
+        PageDTO<UserVO> page = userDomainService.getUserList(userQuery);
+        return ResponseDTO.ok(page);
     }
 
     @ApiOperation(value = "用户详情")
     @GetMapping("{userId}")
-    public HttpResult<UserVO> info(@PathVariable("userId") Long userId) {
+    public ResponseDTO<UserVO> info(@PathVariable("userId") Long userId) {
         UserVO userVO = userDomainService.getUserInfo(userId);
-        return HttpResult.ok(userVO);
+        return ResponseDTO.ok(userVO);
     }
 
     @ApiOperation(value = "添加用户")
     @PostMapping
-    public HttpResult<Void> add(@Validated @RequestBody UserVO userVO) {
+    public ResponseDTO<Void> add(@Validated @RequestBody UserVO userVO) {
         userDomainService.addUser(userVO);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "修改用户")
     @PutMapping
-    public HttpResult<Void> edit(@Validated @RequestBody UserVO userVO) {
+    public ResponseDTO<Void> edit(@Validated @RequestBody UserVO userVO) {
         userDomainService.updateUser(userVO);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "删除用户")
     @DeleteMapping("{userId}")
-    public HttpResult<Void> remove(@PathVariable("userId") Long userId) {
+    public ResponseDTO<Void> remove(@PathVariable("userId") Long userId) {
         userDomainService.removeUser(userId);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "导入用户")
     @PostMapping("-import")
-    public HttpResult<Void> importUser(MultipartFile file) {
+    public ResponseDTO<Void> importUser(MultipartFile file) {
         List<UserVO> userExcel = GeminiExcelUtil.readFromRequest(UserVO.class, file);
         userExcel.forEach(ue -> userDomainService.addUser(ue));
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "导出用户")
     @GetMapping("-export")
-    public void exportUser(HttpServletResponse response, UserVO userVO) {
-        PageDTO<UserVO> userList = userDomainService.getUserList(userVO);
+    public void exportUser(HttpServletResponse response, UserQuery userQuery) {
+        PageDTO<UserVO> userList = userDomainService.getUserList(userQuery);
         GeminiExcelUtil.writeToResponse(userList.getRecords(), UserVO.class, response);
     }
 

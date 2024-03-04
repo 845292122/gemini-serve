@@ -1,5 +1,6 @@
 package net.gemini.domain.system.role.ability;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,6 +15,7 @@ import net.gemini.domain.system.user.pojo.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -110,8 +112,10 @@ public class RoleService extends ServiceImpl<RoleMapper, Role> {
     private void saveMenus(RoleVO roleVO) {
         List<Long> menuIds = roleVO.getMenuIds();
         Long roleId = roleVO.getRoleId();
-        List<RoleMenu> roleMenus = menuIds.stream().map(menuId -> new RoleMenu(roleId, menuId)).collect(Collectors.toList());
-        roleMenuMapper.insertBatchSomeColumn(roleMenus);
+        if (CollectionUtil.isNotEmpty(menuIds)) {
+            List<RoleMenu> roleMenus = menuIds.stream().map(menuId -> new RoleMenu(roleId, menuId)).collect(Collectors.toList());
+            roleMenuMapper.insertBatchSomeColumn(roleMenus);
+        }
     }
 
     public void checkRoleCanBeDelete(Role role) {

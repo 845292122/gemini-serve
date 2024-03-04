@@ -47,7 +47,7 @@ public enum BusinessStatus implements BusinessStatusInterface {
         ROLE_ALREADY_ASSIGN_TO_USER(212, "角色名称: {} 已经分配用户，不能删除"),
         MENU_NAME_NOT_UNIQUE(213, "菜单名称： '{}' 已存在"),
         MENU_NOT_ALLOWED_TO_CREATE_BUTTON_ON_IFRAME_OR_OUT_LINK(214, "Iframe和外链菜单下不能创建按钮"),
-        MENU_ONLY_ALLOWED_TO_CREATE_SUB_MENU_IN_CATALOG(215, "只允许在目录菜单下撞见子菜单"),
+        MENU_ONLY_ALLOWED_TO_CREATE_SUB_MENU_IN_CATALOG(215, "只允许在目录菜单下创建子菜单"),
         MENU_EXIST_CHILD_NOT_ALLOW_DELETE(216, "当前菜单下存在子菜单，不能删除"),
         MENU_ALREADY_ASSIGN_TO_ROLE_NOT_ALLOW_DELETE(217, "当前菜单已分配角色，不能删除"),
         ORG_NAME_NOT_UNIQUE(218, "部门名称: '{}' 已存在"),

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author edison
@@ -24,7 +24,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
 
         if (metaObject.hasSetter(CREATE_TIME_FIELD)) {
-            this.setFieldValByName(CREATE_TIME_FIELD, LocalDateTime.now(), metaObject);
+            this.setFieldValByName(CREATE_TIME_FIELD, new Date(), metaObject);
         }
 
         Long userId = getUserIdSafely();
@@ -37,7 +37,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
 
         if (metaObject.hasSetter(UPDATE_TIME_FIELD)) {
-            this.setFieldValByName(UPDATE_TIME_FIELD, LocalDateTime.now(), metaObject);
+            this.setFieldValByName(UPDATE_TIME_FIELD, new Date(), metaObject);
         }
 
         Long userId = getUserIdSafely();

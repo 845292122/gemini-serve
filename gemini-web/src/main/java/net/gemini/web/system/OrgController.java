@@ -1,10 +1,12 @@
 package net.gemini.web.system;
 
+import cn.hutool.core.lang.tree.Tree;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import net.gemini.common.base.HttpResult;
+import net.gemini.common.base.ResponseDTO;
 import net.gemini.domain.system.org.OrgDomainService;
+import net.gemini.domain.system.org.pojo.OrgQuery;
 import net.gemini.domain.system.org.pojo.OrgVO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -24,36 +26,43 @@ public class OrgController {
 
     @ApiOperation(value = "组织列表")
     @GetMapping
-    public HttpResult<List<OrgVO>> list(OrgVO orgVO) {
-        List<OrgVO> orgList = orgDomainService.getOrgList(orgVO);
-        return HttpResult.ok(orgList);
+    public ResponseDTO<List<OrgVO>> list(OrgQuery orgQuery) {
+        List<OrgVO> orgList = orgDomainService.getOrgList(orgQuery);
+        return ResponseDTO.ok(orgList);
+    }
+
+    @ApiOperation(value = "树形组织列表")
+    @GetMapping("tree")
+    public ResponseDTO<List<Tree<Long>>> treeList(OrgQuery orgQuery) {
+        List<Tree<Long>> treeList = orgDomainService.getOrgTreeList(orgQuery);
+        return ResponseDTO.ok(treeList);
     }
 
     @ApiOperation(value = "组织详情")
     @GetMapping("{orgId}")
-    public HttpResult<OrgVO> info(@PathVariable("orgId") Long orgId) {
+    public ResponseDTO<OrgVO> info(@PathVariable("orgId") Long orgId) {
         OrgVO orgInfo = orgDomainService.getOrgInfo(orgId);
-        return HttpResult.ok(orgInfo);
+        return ResponseDTO.ok(orgInfo);
     }
 
     @ApiOperation(value = "添加组织")
     @PostMapping
-    public HttpResult<Void> add(@Validated @RequestBody OrgVO orgVO) {
+    public ResponseDTO<Void> add(@Validated @RequestBody OrgVO orgVO) {
         orgDomainService.addOrg(orgVO);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "修改组织")
     @PutMapping
-    public HttpResult<Void> edit(@Validated @RequestBody OrgVO orgVO) {
+    public ResponseDTO<Void> edit(@Validated @RequestBody OrgVO orgVO) {
         orgDomainService.updateOrg(orgVO);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 
     @ApiOperation(value = "删除组织")
     @DeleteMapping("{orgId}")
-    public HttpResult<Void> remove(@PathVariable("orgId") Long orgId) {
+    public ResponseDTO<Void> remove(@PathVariable("orgId") Long orgId) {
         orgDomainService.removeOrg(orgId);
-        return HttpResult.ok();
+        return ResponseDTO.ok();
     }
 }

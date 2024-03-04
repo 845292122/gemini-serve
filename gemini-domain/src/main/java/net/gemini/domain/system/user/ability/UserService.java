@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import net.gemini.common.exception.BusinessException;
 import net.gemini.common.exception.BusinessStatus;
 import net.gemini.domain.system.user.pojo.User;
+import net.gemini.domain.system.user.pojo.UserQuery;
 import net.gemini.domain.system.user.pojo.UserVO;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +30,8 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return this.getOne(wrapper);
     }
 
-    public Page<UserVO> getUserList(UserVO userVO) {
-        return userMapper.getUserList(userVO.toPage(), userVO.addQueryCondition());
+    public Page<UserVO> getUserList(UserQuery userQuery) {
+        return userMapper.getUserList(userQuery.toPage(), userQuery.addQueryCondition());
     }
 
     public void checkUsernameUnique(UserVO userVO) {
