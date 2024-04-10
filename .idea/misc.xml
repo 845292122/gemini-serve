@@ -13,7 +13,6 @@
         <option value="$PROJECT_DIR$/gemini-rest/pom.xml" />
       </set>
     </option>
-    <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="zulu-11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
